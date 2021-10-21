@@ -3,6 +3,7 @@ package org.example.interview.game.component;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+/** A class which will act as a player. */
 public class Player {
 
   private int _currentPosition;
@@ -16,12 +17,16 @@ public class Player {
     _count++;
   }
 
+  /** THis will provide a new player whenever is called. */
   public static Supplier<Player> instance = Player::new;
 
+  /** Unique id of the player */
   public Supplier<Integer> id = () -> _id;
 
+  /** Dice is being assigned to play. */
   public Consumer<Dice> passDice = (dice) -> _dice = dice;
 
+  /** Player rolled the dice. */
   public Supplier<Integer> roll =
       () -> {
         if (_dice != null) {
@@ -29,4 +34,10 @@ public class Player {
         }
         return _currentPosition;
       };
+
+  /** Returns the current position of the player. */
+  public Supplier<Integer> currentPosition = () -> _currentPosition;
+
+  /** this will move the player to the given position. */
+  public Consumer<Integer> moveTo = newPostion -> _currentPosition = newPostion;
 }

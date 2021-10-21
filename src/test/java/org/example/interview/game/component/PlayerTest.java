@@ -38,4 +38,10 @@ class PlayerTest {
     Player player1 = Player.instance.get();
     assertEquals(0, (int) player1.roll.get());
   }
+
+  @Test
+  public void shouldReturnPlayerCurrentPosition() {
+    Player player1 = Player.instance.get();
+    assertEquals(0, (int) player1.currentPosition.get());
+  }
 }
